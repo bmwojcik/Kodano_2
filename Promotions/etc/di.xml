@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Kodano\Promotions\Api\PromotionsManagerInterface" type="Kodano\Promotions\Model\PromotionsManager"/>
+
+    <!-- Promotions   -->
+    <virtualType name="Kodano\Promotions\Model\PromotionsResourceModel"
+                 type="Kodano\Promotions\Model\Promotions\ResourceModel">
+        <arguments>
+            <argument name="mainTable" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::KODANO_PROMOTIONS_TABLE_NAME
+            </argument>
+            <argument name="idFieldName" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsDataModel" type="Kodano\Promotions\Model\Promotions\DataModel">
+        <arguments>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsResourceModel</argument>
+            <argument name="_eventPrefix" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsCollection"
+                 type="Kodano\Promotions\Model\Promotions\Collection">
+        <arguments>
+            <argument name="itemObjectClass" xsi:type="string">Kodano\Promotions\Model\PromotionsDataModel</argument>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsResourceModel</argument>
+            <argument name="model" xsi:type="object">Kodano\Promotions\Model\PromotionsDataModel</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsRepository"
+                 type="Kodano\Promotions\Model\Promotions\Repository">
+        <arguments>
+            <argument name="resourceModel" xsi:type="object">Kodano\Promotions\Model\PromotionsResourceModel</argument>
+            <argument name="collection" xsi:type="object">Kodano\Promotions\Model\PromotionsCollection
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsDataModelFactory" type="Kodano\Promotions\Model\Promotions\DataModelFactory">
+        <arguments>
+            <argument name="dataModelClassType" xsi:type="string">Kodano\Promotions\Model\PromotionsDataModel</argument>
+        </arguments>
+    </virtualType>
+
+
+
+
+    <!-- Promotions Group  -->
+
+
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsGroupResourceModel"
+                 type="Kodano\Promotions\Model\Promotions\ResourceModel">
+        <arguments>
+            <argument name="mainTable" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::KODANO_PROMOTIONS_GROUP_TABLE_NAME
+            </argument>
+            <argument name="idFieldName" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsGroupDataModel"
+                 type="Kodano\Promotions\Model\Promotions\DataModel">
+        <arguments>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupResourceModel</argument>
+            <argument name="_eventPrefix" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsGroupCollection"
+                 type="Kodano\Promotions\Model\Promotions\Collection">
+        <arguments>
+            <argument name="itemObjectClass" xsi:type="string">Kodano\Promotions\Model\PromotionsGroupDataModel
+            </argument>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupResourceModel</argument>
+            <argument name="model" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupDataModel</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsGroupRepository"
+                 type="Kodano\Promotions\Model\Promotions\Repository">
+        <arguments>
+            <argument name="resourceModel" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupResourceModel
+            </argument>
+            <argument name="collection" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupCollection
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsGroupDataModelFactory" type="Kodano\Promotions\Model\Promotions\DataModelFactory">
+        <arguments>
+            <argument name="dataModelClassType" xsi:type="string">Kodano\Promotions\Model\PromotionsGroupDataModel</argument>
+        </arguments>
+    </virtualType>
+
+
+
+
+    <!--   Promotions Relations -->
+
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsRelationResourceModel"
+                 type="Kodano\Promotions\Model\Promotions\ResourceModel">
+        <arguments>
+            <argument name="mainTable" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::KODANO_PROMOTIONS_GROUP_RELATION_TABLE_NAME
+            </argument>
+            <argument name="idFieldName" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsRelationDataModel"
+                 type="Kodano\Promotions\Model\Promotions\DataModel">
+        <arguments>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsRelationResourceModel</argument>
+            <argument name="_eventPrefix" xsi:type="const">Kodano\Promotions\Setup\Patch\Data\AddSampleData::TABLES_ENTITY_ID
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Kodano\Promotions\Model\Promotions\Relations\Collection">
+        <arguments>
+            <argument name="itemObjectClass" xsi:type="string">Kodano\Promotions\Model\PromotionsRelationDataModel
+            </argument>
+            <argument name="resource" xsi:type="object">Kodano\Promotions\Model\PromotionsRelationResourceModel</argument>
+            <argument name="model" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupDataModel</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsRelationRepository"
+                 type="Kodano\Promotions\Model\Promotions\Repository">
+        <arguments>
+            <argument name="resourceModel" xsi:type="object">Kodano\Promotions\Model\PromotionsRelationResourceModel
+            </argument>
+            <argument name="collection" xsi:type="object">Kodano\Promotions\Model\Promotions\Relations\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Kodano\Promotions\Model\PromotionsRelationDataModelFactory" type="Kodano\Promotions\Model\Promotions\DataModelFactory">
+        <arguments>
+            <argument name="dataModelClassType" xsi:type="string">Kodano\Promotions\Model\PromotionsRelationDataModel</argument>
+        </arguments>
+    </virtualType>
+
+
+
+
+    <type name="Kodano\Promotions\Model\PromotionsManager">
+        <arguments>
+            <!--    Promotions             -->
+            <argument name="promotionsRepository" xsi:type="object">Kodano\Promotions\Model\PromotionsRepository</argument>
+            <argument name="promotionsDataModelFactory" xsi:type="object">Kodano\Promotions\Model\PromotionsDataModelFactory</argument>
+            <!--    Promotions Group       -->
+            <argument name="promotionsGroupRepository" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupRepository</argument>
+            <argument name="promotionsGroupDataModelFactory" xsi:type="object">Kodano\Promotions\Model\PromotionsGroupDataModelFactory</argument>
+
+            <!--    Relations Table        -->
+            <argument name="promotionsRelationRepository" xsi:type="object">Kodano\Promotions\Model\PromotionsRelationRepository</argument>
+            <argument name="promotionsRelationDataModelFactory" xsi:type="object">Kodano\Promotions\Model\PromotionsRelationDataModelFactory</argument>
+        </arguments>
+    </type>
+
+</config>

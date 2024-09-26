@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi/etc/webapi.xsd">
+    <!--   Promotions   -->
+    <route url="/V1/promotions" method="GET">
+        <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="getAllPromotions"/>
+        <resources>
+            <resource ref="Kodano_Promotions::list"/>
+        </resources>
+    </route>
+
+        <route url="/V1/promotions" method="POST">
+            <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="savePromotions"/>
+            <resources>
+                <resource ref="Kodano_Promotions::create"/>
+            </resources>
+        </route>
+
+    <!--   Promotions Group  -->
+    <route url="/V1/promotions-group" method="GET">
+        <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="getAllPromotionsGroup"/>
+        <resources>
+            <resource ref="Kodano_Promotions::list"/>
+        </resources>
+    </route>
+    <route url="/V1/promotions-group" method="POST">
+        <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="savePromotionsGroup"/>
+        <resources>
+            <resource ref="Kodano_Promotions::create"/>
+        </resources>
+    </route>
+
+    <!--   Promotions Relation  -->
+
+        <route url="/V1/promotions/get-promotions-for-group/:groupId" method="GET">
+            <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="getPromotionsByGroupId"/>
+            <resources>
+                <resource ref="Kodano_Promotions::get_groups_for_promotion"/>
+            </resources>
+        </route>
+
+        <route url="/V1/promotions/get-groups-for-promotion/:promotionsId" method="GET">
+            <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="getGroupsByPromotionsId"/>
+            <resources>
+                <resource ref="Kodano_Promotions::get_promotions_for_group"/>
+            </resources>
+        </route>
+
+        <route url="/V1/promotions/assign" method="POST">
+            <service class="Kodano\Promotions\Api\PromotionsManagerInterface" method="assignPromotionsToGroup"/>
+            <resources>
+                <resource ref="Kodano_Promotions::assign"/>
+            </resources>
+        </route>
+</routes>

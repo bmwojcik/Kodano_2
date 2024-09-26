@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Kodano_Promotions::promotions" title="Manage Promotions" sortOrder="10">
+                    <resource id="Kodano_Promotions::list" title="View Promotions" />
+                    <resource id="Kodano_Promotions::create" title="Create Promotions" />
+                    <resource id="Kodano_Promotions::delete" title="Delete Promotions" />
+
+                    <resource id="Kodano_Promotions::group_list" title="View Promotions Group" />
+                    <resource id="Kodano_Promotions::group_create" title="Create Promotions Group" />
+                    <resource id="Kodano_Promotions::group_delete" title="Delete Promotions Group" />
+
+                    <resource id="Kodano_Promotions::assign" title="Assign Promotions To Group" />
+                    <resource id="Kodano_Promotions::get_groups_for_promotion" title="Get Groups By Promotion ID" />
+                    <resource id="Kodano_Promotions::get_promotions_for_group" title="Get Promotions By Group ID" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

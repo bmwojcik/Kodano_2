@@ -1,0 +1,45 @@
+{
+    "kodano_promotions_group": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "KODANO_PROMOTIONS_GROUP_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "kodano_promotions": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "KODANO_PROMOTIONS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "kodano_promotions_group_relation": {
+        "column": {
+            "entity_id": true,
+            "promotions_id": true,
+            "group_id": true
+        },
+        "index": {
+            "KODANO_PROMOTIONS_GROUP_RELATION_PROMOTIONS_ID_GROUP_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_319714F377FE1B74532166D468CC4D7A": true,
+            "FK_30A2C05D6CA6416984B6E58E4D4A0431": true
+        }
+    }
+}
